@@ -1,16 +1,14 @@
-from decorators import time_it
-from util import findSmallest
+from util import find_smallest
 
 
-@time_it
-def selectionSort(arr):
+def selection_sort(arr):
     """
     Selection Sort algorithm
     :param arr: an array to be sorted
     :return: the array sorted
     """
-    newArr = []
+    new_arr = []
     for i in range(len(arr)):
-        smallest = findSmallest(arr)
-        newArr.append(arr.pop(smallest))
-    return newArr
+        smallest = find_smallest(arr)
+        new_arr.append(arr.pop(smallest))
+    return new_arr

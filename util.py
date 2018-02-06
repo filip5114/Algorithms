@@ -1,7 +1,4 @@
-from decorators import time_it
-
-
-def findSmallest(arr):
+def find_smallest(arr):
     """
     Find a smallest value in the array
     :param arr: an array

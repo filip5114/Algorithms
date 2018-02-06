@@ -1,21 +1,17 @@
-from decorators import time_it
-
-
-@time_it
-def binary_search(itemList, item):
+def binary_search(item_list, item):
     """
     Binary Search algorithm
 
-    :param itemList: an ordered array
+    :param item_list: an ordered array
     :param item: item to be found in the array
     :return: (Int) index of the item in the array. If not found then returns None
     """
     low = 0
-    high = len(itemList) - 1
+    high = len(item_list) - 1
 
     while low <= high:
         mid = (low + high)//2
-        guess = itemList[mid]
+        guess = item_list[mid]
         if guess == item:
             return mid
         if guess > item:
@@ -23,3 +19,4 @@ def binary_search(itemList, item):
         else:
             low = mid + 1
     return None
+
