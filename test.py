@@ -2,6 +2,7 @@ import search
 import sort
 import unittest
 import recursion
+import graphs
 
 
 class TestSearch(unittest.TestCase):
@@ -47,6 +48,22 @@ class TestRecursion(unittest.TestCase):
 
     def test_find_largest_nr_empty(self):
         self.assertEqual(recursion.find_largest_nr([]), 0)
+
+
+class TestGraph(unittest.TestCase):
+
+    def test_bfs(self):
+        graph = {
+            'ja': ['tomasz', 'ewa'],
+            'tomasz': ['natalia', 'adrian'],
+            'ewa': ['madzia', 'karol'],
+            'madzia': ['karol', 'natalia', 'adrian'],
+            'adrian': ['mietek'],
+            'natalia': [],
+            'mietek': [],
+            'karol': []
+        }
+        self.assertIs(graphs.bfs(graph, 'ja'), 'mietek')
 
 if __name__ == '__main__':
     unittest.main()
