@@ -11,3 +11,20 @@ def find_smallest(arr):
             smallest = arr[i]
             smallest_index = i
     return smallest_index
+
+
+def find_lowest_cost_node(costs, processed_nodes=[]):
+    """
+    Function finds the node with the lowest cost which is not yet processed.
+    :param costs: dict() containing nodes with costs
+    :param processed_nodes: list containing processed nodes
+    :return: node with the lowest cost
+    """
+    lowest_cost = float('inf')
+    lowest_cost_node = None
+    for node in costs:
+        cost = costs[node]
+        if cost < lowest_cost and node not in processed_nodes:
+            lowest_cost = cost
+            lowest_cost_node = node
+    return lowest_cost_node

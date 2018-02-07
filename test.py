@@ -3,6 +3,7 @@ import sort
 import unittest
 import recursion
 import graphs
+import util
 
 
 class TestSearch(unittest.TestCase):
@@ -64,6 +65,61 @@ class TestGraph(unittest.TestCase):
             'karol': []
         }
         self.assertIs(graphs.bfs(graph, 'ja'), 'mietek')
+
+    def test_dijkstra(self):
+        graph = {
+            'start': {
+                'A': 5,
+                'B': 2,
+            },
+            'A': {
+                'C': 4,
+                'D': 2,
+            },
+            'B': {
+                'A': 8,
+                'D': 7,
+            },
+            'C': {
+                'D': 6,
+                'Meta': 3,
+            },
+            'D': {
+                'Meta': 1,
+            },
+            'Meta': {}
+        }
+        costs = {
+            'A': 5,
+            'B': 2,
+            'C': float('inf'),
+            'D': float('inf'),
+            'Meta': float('inf'),
+        }
+        parents = {
+            'A': 'Start',
+            'B': 'Start',
+            'C': None,
+            'D': None,
+            'Meta': None,
+        }
+        self.assertEqual(graphs.dijsktra(graph=graph, costs=costs, parents=parents)['Meta'], 8)
+
+
+class TestUtil(unittest.TestCase):
+
+    def find_smallest(self):
+        arr = [5, 3, 8, 2, 10]
+        self.assertEqual(util.find_smallest(arr), 3)
+
+    def test_find_lowest_cost_node(self):
+        costs = {
+            'A': 5,
+            'B': 2,
+            'C': 4,
+            'D': float('inf'),
+        }
+        self.assertEqual(util.find_lowest_cost_node(costs), 'B')
 
 if __name__ == '__main__':
     unittest.main()
